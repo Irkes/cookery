@@ -1,0 +1,62 @@
+{% extends 'base_template/__base.html' %}
+{% load static %}
+{% block title %}Вход{% endblock %}
+{% block nav %}
+<ul class="breadcrumb">
+  <li><a href="#">Главная</a> <span class="divider"></span></li>
+  <li class="active">Вход</li>
+  
+</ul>
+
+
+{% endblock nav %}
+{% block recipes %}
+    <h2> Вход:</h2>   
+
+  <form class="form-horizontal" method="post" role="form"  action="login_view">{% csrf_token %}
+  <div class="form-group">
+  <center>
+  <div class="row">
+  <div class="col-sm-12" >
+  <br><br><br><br>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3">
+    <label for="username">Логин:</label></div>
+    <div class="col-sm-3">
+    <input type="text" name="username" value="" id="username">
+    </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col-sm-3">
+    <label for="password">Пароль:</label></div>
+    <div class="col-sm-3">
+    <input type="password" name="password" value="" id="password"> 
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-sm-2">
+</div>
+<div class="col-sm-2">
+</div>
+        <div class="col-sm-2">
+        <button type="submit" class="btn btn-default" value="login">Готово</button>
+        <input type="hidden" name="next" value="{{ next|escape }}" />
+        </div>
+</div>
+       <br>
+       
+       </div>
+            <h4>Если у Вас еще нет аккаунта на сайте, заполните форму  <a href="{% url 'register' %}">регистрации</a>.</h4>
+
+
+      </center>  
+    </form>
+{% endblock %}
+<!--
+<div class="alert alert-danger" >
+  <strong>Ошибка!</strong> Проверьте правильность ввода логина и пароля.
+</div>-->

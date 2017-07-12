@@ -1,0 +1,113 @@
+
+{% extends 'base_template/__base.html' %}
+{% load static %}
+{% block title %}Show Recipe{% endblock %}
+
+{% block nav %}
+<ul class="breadcrumb">
+  <li><a href="#">Главная</a> <span class="divider"></span></li>
+  <li><a href="#">Рецепты</a> <span class="divider"></span></li>
+  <li><a href="#">Десерты</a> <span class="divider"></span></li>
+  <li class="active">Бисквит</li>
+  
+</ul>
+
+
+{% endblock nav %}
+
+{% block recipes %}
+{% block show_recipe %}
+
+<div class="row">
+<h3><p>Бисквит</p></h3>
+   <div class="col-md-6">
+      <img src="http://www.gangolandia.com//Gng/Img/Dinamiche/Offerta/1467/Album/1norm.jpg" class="img-polaroid" style="width:100% ;height:150px " alt="Image">
+       
+<div class="well">
+            <h4><p>Понравилось: <button id="Rating" data-id="{{ recipe.id }}" type="button" class="btn btn-mini btn-default glyphicon glyphicon-heart">
+             <span > 5{% if recipe.Rating > 0 %} {{ recipe.Rating }} {% endif %}</span>
+
+              </button> <br> Добавил: <a href="#">user1</a></p>
+             Время приготовления: 40 минут
+          <ol class="list-unstyled">Предназначение: 
+            <li style="padding-left: 10px"><a href="#">На обед:</a><a href="#"> На десерт</a></li>
+            <li style="padding-left: 10px"><a href="#">На праздничный стол</a>:<br><a href="#" style="padding-left: 10px"> День рождения</a> / <a href="#">Новый год</a></li>
+            <li style="padding-left: 10px"><a href="#">Для детей</a>:<a href="#">На десерт</a> </li>
+           <li style="padding-left: 10px"> <a href="#">На ужин:</a><a href="#"> На десерт</a></li>
+           </ol> </h4>
+
+          
+          </div>
+ 
+            
+              <h3>Ингредиенты:</h3>
+              <div class="row" style="padding-left: 25px">
+               <h4> Сахар - 150 г </h4>
+              </div>
+              <div class="row" style="padding-left: 25px">
+                 <h4> Мука - 150 г  </h4> 
+              </div>
+              <div class="row" style="padding-left: 25px">
+                 <h4> Яйцо куриное - 4шт</h4>
+              </div>
+              <div class="row" style="padding-left: 25px">
+                <h4>  Разрыхлитель теста - 1ч.л.</h4>
+              </div>              
+          
+
+
+      </div>
+     
+    <div class="col-md-6">
+          <div class="well">
+            <p>Простой и быстрый способ приготовить вкусный бисквит.</p>
+          </div>
+        </div>
+
+       
+
+  </div>
+      
+        <div class="col-md-12">
+         
+          
+           
+ 
+<h2>ПОШАГОВЫЙ РЕЦЕПТ ПРИГОТОВЛЕНИЯ</h2>
+<div class="row">
+<h3>Шаг 1</h3>
+<div class="col-md-4">
+<img src="http://www.gastronom.ru/binfiles/images/userfiles/00000016/s_0546200d.jpg" class="img-polaroid" style="width:100% ;height:150px " alt="Image">
+ </div>
+ <div class="col-md-8">
+   Отделить белки от желтков. Начать взбивать чуть-чуть подсоленные белки на самой маленькой скорости миксера. Медленно, по одной ложке добавить сахар и семена ванили.
+ </div>
+ </div>
+ <div class="row">
+<h3>Шаг 2</h3>
+<div class="col-md-4">
+<img src="http://www.gastronom.ru/binfiles/images/userfiles/00000016/s_7acb900a.jpg" class="img-polaroid" style="width:100% ;height:150px " alt="Image">
+ </div>
+<div class="col-md-8">
+  Желтки взбить до однородности. Когда белковая масса станет белой и довольно плотной, так же по ложке добавить желтки, продолжая при этом взбивать. Убрать миксер и начать просеивать в миску с белками муку, аккуратно вымешивая ложкой по направлению снизу вверх.
+</div>
+         </div>
+
+<div class="row">
+<h3>Шаг 3</h3>
+<div class="col-md-4">
+<img src="http://www.gastronom.ru/binfiles/images/userfiles/00000016/s_be6ad6bd.jpg" class="img-polaroid" style="width:100% ;height:150px " alt="Image">
+ </div>
+<div class="col-md-8">
+  Готовое тесто вылить в смазанную маслом жаропрочную форму диаметром 22-24 см и отправить в разогретую до 190-200 °С духовку на 20-25 минут. Когда подойдет время, вынуть форму, перевернуть бисквит на тарелку (решетку, полотенце) и дать полностью остыть.
+</div>
+         </div>
+
+
+        </div>
+    
+
+
+
+{% endblock show_recipe%}
+{% endblock %}

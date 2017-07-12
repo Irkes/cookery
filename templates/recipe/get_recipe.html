@@ -1,0 +1,263 @@
+
+{% extends 'base_template/__base.html' %}
+{% load static %}
+{% block title %}Get Recipe{% endblock %}
+
+{% block nav %}
+<ul class="breadcrumb">
+  <li><a href="#">Рецепты</a> <span class="divider"></span></li>
+  <li class="active">Добавить рецепт</li>
+  
+</ul>
+
+
+{% endblock nav %}
+
+{% block recipes %}
+
+  <form class="form-horizontal" role="form" action="get_recipe" method="post">{% csrf_token %}
+    <div class="form-group">
+        <h3>Добавить рецепт</h3>
+    <label for="inputName" class="col-sm-3 control-label">Название блюда</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control"  value="{{ recipe_name }}" >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputDiscr" class="col-sm-3 control-label">Краткое описание рецепта</label>
+    <div class="col-sm-9">
+      <textarea class="form-control" rows="3" value="{{ main_recipe_discription  }}"></textarea>
+      <span class="help-block">Обязательно напишите 2-3 строки - что это за блюдо, его особенности, вкусовые качества.
+Этот текст будет показываться в качестве анонса к Вашему рецепту - и именно по этому тексту люди будут определять, стоит читать Ваш рецепт - или нет.</span>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="InputFile" class="col-sm-3 control-label">Основное фото</label>
+     <div class="col-sm-9">
+    <input type="file"  id="InputFile" value="{{ main_picture }}">
+    </div>
+  </div>
+
+
+<div class="form-group">
+<label for="selectCategory" class="col-sm-3 control-label">Выберите категорию для блюда</label>
+<div class="col-sm-3">
+<select id="selectCategory" class="form-control" value="{{ recipe_category_name }}">
+  <option value="soup">Супы</option>
+  <option value="garnir">Горячие блюда</option>
+  <option value="salad">Салаты</option>
+  <option value="snacks">Закуски</option>
+  <option value="bakery">Выпечка</option>
+  <option value="dessert">Десерты</option>
+  <option value="porridge">Каши</option>
+  <option value="Pickled">Заготовки</option>
+  <option value="milk">Молочные продукты</option>
+
+  </select>
+ </div>
+ </div>
+
+  <div class="form-group">
+      <label for="selectAppointment" class="col-sm-3 control-label">Отметьте назначение вашего блюда</label>
+      <div class="col-sm-9" >
+        <div class="col-sm-4">
+        <ul class="list-unstyled">
+        <li>  <div class="checkbox" ><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На завтрак</b></label></div></li>
+          <ul class="list-unstyled">
+          <div class ="li_style">
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Быстрый завтрак</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Сытный завтрак</label></div> </li>
+            </div>
+            </ul>
+
+        <li>  <div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На обед</b></label></div></li>
+        <ul class="list-unstyled"><div class ="li_style">
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Первое</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Второе</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Десерт</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На закуску</label></div> </li></div></ul>
+
+        <li>  <div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На ужин</b></label></div></li>
+          <ul class="list-unstyled"><div class ="li_style">
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На горячее</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На десерт</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На закуску</label></div> </li>
+            </div></ul>
+        <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На полдник</b></label></div></li>
+
+        </ul>
+        </div>
+    <div class="col-sm-4">
+    <ul class="list-unstyled">
+
+            <li>  <div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>Для детей</b></label></div></li>
+          <ul class="list-unstyled"><div class ="li_style">
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На завтрак</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На обед</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На полдник</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На ужин</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На десерт</label></div> </li>
+            </div></ul>
+              <li>  <div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>Специальное питание</b></label></div></li>
+        <ul class="list-unstyled"><div class ="li_style">
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Вегетарианское питание</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Для беременных и кормящих</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Для диеты</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Постное питание</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Раздельное питание</label></div> </li>
+          </div></ul>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На природу</b></label></div> </li>
+        </ul>
+
+        </ul>
+    </div>
+<div class="col-sm-4">
+ <ul class="list-unstyled">
+      <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>На праздничный стол</b></label></div></li>
+        <ul class="list-unstyled"><div class ="li_style">
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"> 23 февраля</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">8 Марта</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">День влюбленных</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">День рождения</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Новый год</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">Пасха</label></div> </li>
+          <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"> Рождество</label></div> </li>
+        </div></ul>
+
+
+<div class="col-sm-4">
+<ul class="list-unstyled">
+        <li>  <div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}"><b>Неожиданные гости</b></label></div></li>
+          <ul class="list-unstyled"><div class ="li_style">
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На горячее</label></div> </li>
+            <li><div class="checkbox"><label><input type="checkbox" name="" value="{{ recipe_category_name }}">На закуску</label></div> </li>
+            </div></ul>
+
+
+
+
+</ul>
+      </div>
+   </ul>
+    </div>
+          </div></div>
+
+
+
+
+<div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">Время приготовления</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" value="{{ cooking_time }}" >
+       <span class="help-block">(минут)</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">Количество порций</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" value="{{ number_of_servings  }}" >
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">Разбить ингредиенты на группы</label>
+    <div class="col-sm-9">
+    <span class="help-block">Не обязательно для заполнения</span>
+        <input type="text" class="form-control" placeholder="Введите название" value="{{ group_of_product  }}">
+
+      <br>
+        <button type="submit" class="btn btn-default">Добавить</button>
+
+    </div>
+  </div>
+<div class="form-group">
+
+    <label for="inputName" class="col-sm-3 control-label">Ингредиенты:</label>
+    <div class="col-sm-9">
+
+    <div class="row">
+  <div class="col-sm-3">
+    <label for="inputName" class="col-sm-2 control-label"><b>Ингредиент</b></label></div>
+    <div class="col-sm-3">
+    <label for="inputName" class="col-sm-3 control-label"><b>Количество</b></label></div>
+    <div class="col-sm-4">
+    <label for="inputName" class="col-sm-4 control-label"><b>Мера веса/Объема</b></label></div>
+   
+    </div>
+<div class="group_of_element">
+    <div class="row">
+    <div class="col-sm-3">
+    <input type="text" class="form-control" value="{{ product_name  }}"></div>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" value="{{ product_weight  }}" ></div>
+    <div class="col-sm-3">
+    <select id="selectCategory" class="form-control"  value="{{ product_weight_type  }}">
+    <option value="0"></option>
+  <option value="1">граммы</option>
+  <option value="2">литры</option>
+  </select></div>  
+    </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+    <div class="col-sm-9">
+    <br>
+      <button type="submit" class="btn btn-default">+Ингридиент</button>
+    </div>
+  </div>
+
+  </div>
+    </div>
+
+<div class="form-group">
+<div class="row">
+
+    <label for="inputName" class="col-sm-3 control-label">Пошаговый рецепт</label>
+
+
+    <label for="inputName" class="col-sm-3 control-label">Описание шага</label>
+    <div class="col-sm-5">
+      <textarea class="form-control" rows="3"  value="{{ steps_discription  }}"></textarea>
+    </div>
+
+      <div class="col-sm-offset-6 col-sm-10">
+       <input type="file"  id="InputFile" value="{{ picture }}">
+       </div>
+        </div>
+
+<div class="form-group">
+    <div class="col-sm-offset-6 col-sm-10">
+      <button type="submit" class="btn btn-default" value="{{ number_of_steps }}"> + Добавить шаг</button>
+    </div>
+  </div>
+
+    </div>
+
+
+<div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">Текст рецепта</label>
+    <span class="help-block">Если у вас пошаговый рецепт, это поле можно не заполнять.</span>
+     <div class="col-sm-offset-3 col-sm-9">
+      <textarea class="form-control" rows="3" value="{{ recipe_discription }}"></textarea>
+
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-9">
+      <button type="submit" class="btn btn-default">Готово</button>
+      
+    </div>
+
+  </div>
+  </div>
+   </div>
+</form>
+
+
+
+{% endblock %}

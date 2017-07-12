@@ -1,0 +1,44 @@
+{% extends 'base_template/__base.html' %}
+{% load static %}
+{% block title %}Show Recipe{% endblock %}
+
+{% block recipes %}
+{% block show_recipe %}
+
+<div class="row">
+    <div class="col-sm-6">
+      <div class="thumbnail">
+      <img src="http://www.gangolandia.com//Gng/Img/Dinamiche/Offerta/1467/Album/1norm.jpg" class="img-circle" style="width:100% ;height:150px " alt="Image">
+      <div class="caption">
+        
+        <h4>Бисквит</h4>
+        <p>Простой и быстрый способ приготовить вкусный бисквит
+        <div class="panel-footer">
+         <button id="Rating" data-id="{{ recipe.id }}" type="button" class="btn btn-mini btn-default glyphicon glyphicon-heart">
+             <span > 5{% if recipe.Rating > 0 %} {{ recipe.Rating }} {% endif %}</span>
+
+              </button></div></div></div>
+      </div>
+    
+     <div class="col-sm-6">
+      <div class="thumbnail" >
+      <img src="http://ihappymama.ru/wp-content/uploads/2015/02/pesochnoe-pechene.jpg" class="img-circle"  alt="Image" style="width:100% ;height:150px ">
+      <div class="caption">
+        
+        <h4>Песочное печенье</h4>
+        <p>Очень вкусное и быстрое печенье к чаю</p>
+        <div class="panel-footer">
+         <button id="Rating" data-id="{{ recipe.id }}" type="button" class="btn btn-mini btn-default glyphicon glyphicon-heart">
+             <span > 5{% if recipe.Rating > 0 %} {{ recipe.Rating }} {% endif %}</span>
+
+              </button></div></div></div>
+      </div>
+     
+
+  </div>
+
+
+
+
+{% endblock show_recipe%}
+{% endblock %}

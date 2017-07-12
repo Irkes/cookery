@@ -1,0 +1,14 @@
+{{ block left_user_menu }}
+<div class="col-md-3">
+<div class="list-group">
+  <h4 class="list-group-item-heading">Добро пожаловать, {{ user.username }}!</h4>
+   
+  
+  <a href="{% url 'my_recipe' %}" class="list-group-item">Мои рецепты</a>
+  <a href="{% url 'my_menu' %}" class="list-group-item">Мое меню</a>
+  <a href="#{% url 'my_product_list' %}" class="list-group-item">Мой список покупок</a>
+ 
+</div>
+
+</div>
+{{ endblock }}

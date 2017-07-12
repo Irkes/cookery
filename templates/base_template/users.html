@@ -1,0 +1,45 @@
+
+{% extends 'base_template/__base.html' %}
+{% load static %}
+{% block title %}Личный кабинет{% endblock %}
+
+{% block nav %}
+<ul class="breadcrumb">
+  <li><a href="#">Главная</a> <span class="divider"></span></li>
+  <li><a href="#">Личный кабинет</a> <span class="divider"></span></li>
+  <li class="active">Мой список покупок</li>
+  
+</ul>
+
+
+{% endblock nav %}
+<div class="row">
+<div class="col-md-4">
+ 
+
+<div class="list-group">
+  <h4 class="list-group-item-heading">Добро пожаловать, {{username}}!</h4>
+   
+  
+  <a href="/home/" class="list-group-item">Мои рецепты</a>
+  <a href="/home/" class="list-group-item">Мое меню</a>
+  <a href="/home/" class="list-group-item">Мой список покупок</a>
+ 
+</div>
+
+</div>
+
+</div></div>
+
+
+{% block recipes %}
+    
+{% block product_list %}
+
+{% include 'recipe/product_list.html' %}
+{% endblock %}
+{% endblock %}
+
+{% block user_menu %}
+{% include 'recipes/left_user_menu.html' %}
+{% endblock %}
